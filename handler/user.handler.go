@@ -130,10 +130,10 @@ func UserHandlerUpdate(ctx *fiber.Ctx) error {
 }
 
 func UserHandlerDelete(ctx *fiber.Ctx) error {
-	userKode := ctx.Params("id")
+	userId := ctx.Params("id")
 	var user entity.User
 
-	err := database.DB.Debug().First(&user, "id=?", userKode).Error
+	err := database.DB.Debug().First(&user, "id=?", userId).Error
 
 	if err != nil {
 		return ctx.Status(404).JSON(fiber.Map{
