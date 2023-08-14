@@ -25,8 +25,8 @@ func Auth(ctx *fiber.Ctx) error {
 
 	role := claims["role"].(string)
 	if role != "admin" {
-		// userInfo := ctx.Locals("userInfo")
-		// log.Println("user info data:", userInfo)
+		userInfo := ctx.Locals("userInfo")
+		log.Println("user info data:", userInfo)
 		log.Println("info data:", claims)
 		return ctx.Status(fiber.StatusForbidden).JSON(fiber.Map{
 			"Message": "Forbiden Access",
